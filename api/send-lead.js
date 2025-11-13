@@ -16,12 +16,12 @@ export default async function handler(req, res) {
     const { name, phone, project, budget, timeline, contact_channel } = req.body || {};
     const text =
       `🆕 Заявка с сайта OneLinkWeb\n\n` +
-      `Имя👤: ${name || '-'}\n` +
-      `Телефон☎️: ${phone || '-'}\n` +
-      `Связаться через🎾: ${contact_channel || '-'}\n` +
-      `Бюджет💳: ${budget || '-'}\n` +
-      `Сроки🕰: ${timeline || '-'}\n` +
-      `Описание✍️: ${project || '-'}`;
+      `👤Имя: ${name || '-'}\n` +
+      `☎️Телефон: ${phone || '-'}\n` +
+      `🎾Связаться через: ${contact_channel || '-'}\n` +
+      `💳Бюджет: ${budget || '-'}\n` +
+      `🕰Сроки: ${timeline || '-'}\n` +
+      `✍️Описание: ${project || '-'}`;
 
     const url = `https://api.telegram.org/bot${token}/sendMessage`;
     const tgRes = await fetch(url, {
