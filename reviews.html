@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="ru"><head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Отзывы — OneLinkWeb</title><link href="./styles.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/></head><body>
+<header>
+<div class="container nav">
+<a class="brand" href="./index.html"><img alt="Telegram" class="brand-icon" src="./assets/telegram-official.svg"/><span class="brand-badge">OneLinkWeb</span></a>
+<nav>
+<ul id="navlist">
+<li><a href="./index.html">Главная</a></li>
+<li><a href="./do.html">Мы можем</a></li>
+<li><a href="./why.html">Почему OneLinkWeb?</a></li>
+<li><a href="./reviews.html">Отзывы</a></li>
+<li><a href="./contact.html">Оставить заявку</a></li>
+</ul>
+</nav>
+<div class="burger" id="burger"><span></span><span></span><span></span></div>
+<a class="cta-btn btn btn--primary" href="./contact.html">Связаться</a>
+</div>
+</header>
+<main class="container reviews-section" style="padding:56px 0">
+<h1>Отзывы клиентов ★★★★★</h1>
+<div class="carousel" style="margin-top:12px">
+<div class="track" id="track"></div>
+</div>
+<div class="controls"><button id="prev">←</button><button id="next">→</button></div>
+</main>
+<footer>
+<div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+<div>© 2025 OneLinkWeb</div>
+<div>Сделано с вниманием к деталям</div>
+</div>
+</footer>
+<script>const b=document.getElementById('burger');if(b){const l=document.getElementById('navlist');b.onclick=()=>l.classList.toggle('open')}</script>
+<script>
+const REV=[
+  {n:'Анна К.',t:'Интернет‑магазин',d:'Запустили MVP за 2 дня! Оплата, каталог и CRM — всё работает.'},
+  {n:'Илья М.',t:'Образовательный бот',d:'Сделали ассистента для курса. Поддержка всегда на связи.'},
+  {n:'Мария С.',t:'Медиа',d:'Рассылки и аналитика экономят время. Удобные отчёты в Sheets.'},
+  {n:'Олег Т.',t:'B2B‑сервис',d:'Интегрировали Notion и GitHub — единый центр.'},
+  {n:'Вероника Р.',t:'Сообщество',d:'Модерация и автоматика — порядок в чате.'},
+  {n:'Роман Д.',t:'Маркетплейс',d:'Подключили платежи и подписки — стабильно.'},
+  {n:'Дарья П.',t:'Стартап',d:'Идеи превращают в прототипы очень быстро.'},
+  {n:'Сергей Л.',t:'HR',d:'Бот‑анкета экономит часы рекрутёрам.'},
+  {n:'Кирилл Ж.',t:'Кафе',d:'Меню и заказы — всё в Telegram.'}
+];
+const track=document.getElementById('track');
+REV.forEach(r=>{const el=document.createElement('div');el.className='review';
+  el.innerHTML=`<div class="rev-head"><div class="avatar">${r.n[0]}</div><div><b>${r.n}</b><div class="note">${r.t}</div></div></div>
+    <div class="rev-body">${r.d}</div>
+    <div class="rev-footer"><div class="rev-tg-icon"></div></div>`;track.appendChild(el)});
+let index=0;function pv(){return innerWidth<=560?1:(innerWidth<=992?2:3)}
+function upd(){const it=document.querySelector('.review');if(!it)return;const w=it.getBoundingClientRect().width+16;const max=Math.max(0,REV.length-pv());if(index<0)index=max;if(index>max)index=0;track.style.transform=`translateX(${-index*w}px)`}
+document.getElementById('prev').onclick=()=>{index--;upd()};document.getElementById('next').onclick=()=>{index++;upd()};addEventListener('resize',upd);setTimeout(upd,80);
+</script>
+<script>
+    // Neon button ripple on click
+    document.querySelectorAll('.btn').forEach(btn=>{
+      btn.addEventListener('click', e=>{
+        btn.classList.add('pulse'); setTimeout(()=>btn.classList.remove('pulse'),400);
+      });
+    });
+    // Typewriter / chat-typing imitation
+    (function(){
+      const el=document.getElementById('typing'); if(!el) return;
+      const messages=['Прототип готов…', 'Подключаем интеграции…', 'Запуск за 1–3 дня!'];
+      let i=0, j=0, dir=1;
+      function tick(){
+        el.setAttribute('data-text', messages[i].slice(0,j));
+        j+=dir;
+        if(j>messages[i].length+6){dir=-1}
+        if(j<0){dir=1; i=(i+1)%messages.length}
+        setTimeout(tick, dir>0?65:35);
+      } tick();
+    })();
+    </script>
+</body></html>

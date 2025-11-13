@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="ru"><head>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Почему OneLinkWeb</title><link href="./styles.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/></head><body>
+<header>
+<div class="container nav">
+<a class="brand" href="./index.html"><img alt="Telegram" class="brand-icon" src="./assets/telegram-official.svg"/><span class="brand-badge">OneLinkWeb</span></a>
+<nav>
+<ul id="navlist">
+<li><a href="./index.html">Главная</a></li>
+<li><a href="./do.html">Мы можем</a></li>
+<li><a href="./why.html">Почему OneLinkWeb?</a></li>
+<li><a href="./reviews.html">Отзывы</a></li>
+<li><a href="./contact.html">Оставить заявку</a></li>
+</ul>
+</nav>
+<div class="burger" id="burger"><span></span><span></span><span></span></div>
+<a class="cta-btn btn btn--primary" href="./contact.html">Связаться</a>
+</div>
+</header>
+
+<main class="container why-section"><h1>Почему именно OneLinkWeb?</h1><p class="note" id="why-subtitle">Команда, которая не просто пишет ботов, а отвечает за результат: от прототипа за 1–3 дня до поддержки в проде.</p><div class="why-grid"><article class="why-card"><div class="why-icon">⚡</div><h3>Скорость</h3><p class="why-text">Прототип за 1–3 дня, полный запуск — от 1 недели</p></article><article class="why-card"><div class="why-icon">🛡</div><h3>Опыт</h3><p class="why-text">От эхо‑ботов до экосистем с БД, интеграциями и оплатой</p></article><article class="why-card"><div class="why-icon">🧠</div><h3>AI‑экспертиза</h3><p class="why-text">GPT‑ассистенты, RAG, обучение, аналитика</p></article><article class="why-card"><div class="why-icon">🛟</div><h3>Поддержка</h3><p class="why-text">Запуск, обновления, развитие, масштабирование</p></article></div><div class="why-stats"><div class="stat"><div class="stat-big">1000+</div><div class="stat-small">запущенных ботов</div></div><div class="stat"><div class="stat-big">3 дня</div><div class="stat-small">до первого прототипа</div></div><div class="stat"><div class="stat-big">4.9 / 5</div><div class="stat-small">средняя оценка</div></div><div class="stat"><div class="stat-big">4.9 / 5</div><div class="stat-small">по отзывам</div></div></div></main><footer>
+<div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+<div>© 2025 OneLinkWeb</div>
+<div>Сделано с вниманием к деталям</div>
+</div>
+</footer>
+<script>const b=document.getElementById('burger');if(b){const l=document.getElementById('navlist');b.onclick=()=>l.classList.toggle('open')}</script>
+<script>
+    // Neon button ripple on click
+    document.querySelectorAll('.btn').forEach(btn=>{
+      btn.addEventListener('click', e=>{
+        btn.classList.add('pulse'); setTimeout(()=>btn.classList.remove('pulse'),400);
+      });
+    });
+    // Typewriter / chat-typing imitation
+    (function(){
+      const el=document.getElementById('typing'); if(!el) return;
+      const messages=['Прототип готов…', 'Подключаем интеграции…', 'Запуск за 1–3 дня!'];
+      let i=0, j=0, dir=1;
+      function tick(){
+        el.setAttribute('data-text', messages[i].slice(0,j));
+        j+=dir;
+        if(j>messages[i].length+6){dir=-1}
+        if(j<0){dir=1; i=(i+1)%messages.length}
+        setTimeout(tick, dir>0?65:35);
+      } tick();
+    })();
+    </script>
+</body></html>
